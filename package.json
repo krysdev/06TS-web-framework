@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "scripts": {
+    "START": "npx parcel index.html"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
