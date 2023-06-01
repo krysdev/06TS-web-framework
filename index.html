@@ -7,11 +7,15 @@
       }
     </style>
     <script>
-      var parcelRequire;
+      ///////// not required when type=module is deleted
+      // var parcelRequire;
     </script>
   </head>
   <body>
-    <script type="module" src="./src/index.ts"></script>
     XxX
+
+    <!-- Don't use 'type="module"' with parcel. There is no reason to do so as Parcel already compiles es6 modules away -->
+    <!-- <script type="module" src="./src/index.ts"></sctype=> -->
+    <script src="./src/index.ts"></script>
   </body>
 </html>

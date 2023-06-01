@@ -1,6 +1,13 @@
-// import { User } from './models/User';
+import { User } from './models/User';
 
-// const user = new User({name: 'XXX', age: 99}); // UserProps interface allows to have the properties optional
+// const user = new User({ id: 1 }); // UserProps interface allows to have the properties optional
+// user.set({name:'AAA', age: 666})
+
+const user = new User({ name: 'new record', age: 0 });
+
+// user.save();
+
+
 
 // // user.set({ name: 'ABC' });
 
@@ -10,11 +17,11 @@
 // user.on('click', () => {});
 // console.log(user)
 
-import axios from 'axios';
+// import axios from 'axios';
 
-// axios.post('http://127.0.0.1:3005/users', {
-//   name: 'XXXXX',
-//   age: 99,
-// });
+// // axios.post('http://localhost:3005/users', {
+// //   name: 'XXXXX',
+// //   age: 99,
+// // });
 
-axios.get('http://localhost:3005/users');
+// axios.get('http://localhost:3005/users');
