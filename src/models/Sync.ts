@@ -2,7 +2,7 @@ import axios, { AxiosPromise } from 'axios'; // AxiosPromise is a type
 
 // this interface guarantees that the T type will always have the 'id' property
 interface hasId {
-  id: number;
+  id?: number;
 }
 
 // generics constraint - the 'Sync' class can be only used with a type that has the 'id' property
