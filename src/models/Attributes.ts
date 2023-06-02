@@ -12,7 +12,9 @@ export class Attributes<T extends object> {
   // Whatever argument we pass in as a 'key' it has to be a type of K
   // It has to return T[K] - it is a normal object look up: object[property]
   // So look up the interface T and return the value of the key/property at K (for 'id' it will be 'number', for 'name' 'string' etc.)
-  get<K extends keyof T>(key: K): T[K] {
+  
+  // get<K extends keyof T>(key: K): T[K] {          --->   get(key){}   changed to arrow   get = (key)=>{}
+  get = <K extends keyof T>(key: K): T[K] => {
     return this.data[key];
   }
 

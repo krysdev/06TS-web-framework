@@ -6,22 +6,31 @@ import { User } from './models/User';
 const user = new User({ name: 'new record', age: 0 });
 
 // user.save();
-
-
-
 // // user.set({ name: 'ABC' });
 
 // // console.log(user.get('name'));
 // // console.log(user.get('age'));
 
-// user.on('click', () => {});
+user.on('x-x', () => {
+  console.log('x-x-x-x-x');
+});
+user.trigger('x-x')
+
+console.log(user.get('name'))
+
 // console.log(user)
 
-// import axios from 'axios';
 
-// // axios.post('http://localhost:3005/users', {
-// //   name: 'XXXXX',
-// //   age: 99,
-// // });
+///////////// how 'this' works in JS
 
-// axios.get('http://localhost:3005/users');
+// const colours = {
+//   colour: 'red',
+//   print() {
+//     console.log(this.colour);
+//   },
+// };
+
+// colours.print(); // 'this' points to the left, so to the 'colours' object
+
+// const print = colours.print;
+// print(); // there is nothing on the left, so 'this' is 'undefined'

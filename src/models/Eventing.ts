@@ -6,7 +6,8 @@ export class Eventing {
   // <  this.events['click'] = [ func ]  >
   events: { [key: string]: Callback[] } = {}; // initialize as an empty object
 
-  on(eventName: string, callback: Callback): void {
+  // on = (eventName, Callback)=>{} - arrow function
+  on = (eventName: string, callback: Callback): void => {
     // if there is no event handler when we create a 'User' (it's undefined), then we create an empty array
     const handlers = this.events[eventName] || []; // either way 'handlers' is an array
     // add a new callback function to the array
@@ -15,7 +16,8 @@ export class Eventing {
     this.events[eventName] = handlers;
   }
 
-  trigger(eventName: string): void {
+  // arrow function
+  trigger = (eventName: string): void => {
     const handlers = this.events[eventName];
 
     // check if 'handlers' is defined
