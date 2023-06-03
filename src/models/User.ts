@@ -25,16 +25,22 @@ export class User {
 
   // getters (accessors)
   // 'on' here is a reference to the 'on' method from the 'Eventing' class
-  // it is not called here, the arguments will be passed through
+  // it is not called here, the arguments will be passed through i.e.  user.on('click', () => {console.log('clicked')})
   get on() {
     return this.events.on; // there are no '()', we refer to this method like to a property
   }
-
   get trigger() {
     return this.events.trigger;
   }
-
   get get() {
     return this.attributes.get;
   }
+
+  // anytime we call 'set' we update the data in Attributes and we trigger a 'change' event (in Eventing)
+  // this change allows other parts of the application to update also
+  set(update: UserProps): void {
+    this.attributes.set(update);
+    this.events.trigger('change');
+  }
+  
 }

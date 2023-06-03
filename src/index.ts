@@ -5,21 +5,19 @@ import { User } from './models/User';
 
 const user = new User({ name: 'new record', age: 0 });
 
-// user.save();
-// // user.set({ name: 'ABC' });
-
-// // console.log(user.get('name'));
-// // console.log(user.get('age'));
-
-user.on('x-x', () => {
-  console.log('x-x-x-x-x');
-});
-user.trigger('x-x')
-
 console.log(user.get('name'))
 
-// console.log(user)
+user.on('change', () => {
+  console.log('user changed');
+});
 
+user.set({ name: 'ABC' });
+
+console.log(user.get('name'))
+// console.log(user.get('age'));
+
+
+// console.log(user)
 
 ///////////// how 'this' works in JS
 
