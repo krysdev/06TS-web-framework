@@ -1,6 +1,7 @@
 import { Eventing } from './Eventing';
 import { Sync } from './Sync';
 import { Attributes } from './Attributes';
+import { AxiosResponse } from 'axios'; // type
 
 export interface UserProps {
   name?: string; // optional property (in a strict mode it is: string | undefined)
@@ -42,5 +43,22 @@ export class User {
     this.attributes.set(update);
     this.events.trigger('change');
   }
-  
+
+  // this method passes the job to the 'fetch' in 'Sync' and works with the response here
+  fetch(): void {
+    // 'id' is required to fetch properly from the DB
+    const id = this.get('id'); // or this.attributes.get('id') - it doesn't matter in this case
+    if (typeof id !== 'number') {
+      throw new Error('Cannot fetch without an id');
+    }
+
+    // fetch the info and then set it in Attribiutes (to create an instance of User)
+    // it's a promise, so '.then'
+    this.sync.fetch(id).then((response: AxiosResponse): void => {
+      // update the User class properties with the fetched ones
+      // it passes the response.data to the 'set' method here in this class (User)
+      this.set(response.data);
+      // you could use 'this.attributes.set', but the 'set' from here combines the 'set' from Attributes and 'trigger' from Eventing
+    });
+  }
 }

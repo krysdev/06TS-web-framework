@@ -1,21 +1,20 @@
 import { User } from './models/User';
 
-// const user = new User({ id: 1 }); // UserProps interface allows to have the properties optional
-// user.set({name:'AAA', age: 666})
+// const user = new User({ name: 'new record', age: 0 });
+const user = new User({ id: 1 });
 
-const user = new User({ name: 'new record', age: 0 });
-
-console.log(user.get('name'))
 
 user.on('change', () => {
-  console.log('user changed');
+  console.log(user);
 });
 
-user.set({ name: 'ABC' });
+user.fetch()
 
-console.log(user.get('name'))
+
+// user.set({ name: 'ABC' });
+
+// console.log(user.get('name'))
 // console.log(user.get('age'));
-
 
 // console.log(user)
 

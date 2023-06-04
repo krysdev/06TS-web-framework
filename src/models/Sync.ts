@@ -13,11 +13,6 @@ export class Sync<T extends hasId> {
   fetch(id: number): AxiosPromise {
     // return the result of get (a promise), so the response can be used in User.ts
     return axios.get(`${this.URL}/${id}`);
-
-    // .then((response: AxiosResponse): void => {
-    //     // update the User class properties with the fetched ones
-    //     this.set(response.data);
-    //   });
   }
 
   save(data: T): AxiosPromise {
