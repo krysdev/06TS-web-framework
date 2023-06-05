@@ -6,7 +6,7 @@ interface hasId {
 }
 
 // generics constraint - the 'Sync' class can be only used with a type that has the 'id' property
-export class Sync<T extends hasId> {
+export class ApiSync<T extends hasId> {
   // when creating an instnace of 'Sync' the URL argument is required: 'http://localhost:3005/users' (no slash at the end)
   constructor(public URL: string) {}
 

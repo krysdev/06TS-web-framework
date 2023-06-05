@@ -1,15 +1,14 @@
 import { User } from './models/User';
 
-// const user = new User({ name: 'new record', age: 0 });
-const user = new User({ id: 1 });
-
+const user = User.buildUser({ id: 1 });
 
 user.on('change', () => {
-  console.log(user);
+  console.log(user.attributes.data);
 });
 
 user.fetch()
 
+// user.save()
 
 // user.set({ name: 'ABC' });
 
@@ -17,6 +16,10 @@ user.fetch()
 // console.log(user.get('age'));
 
 // console.log(user)
+
+//
+
+//
 
 ///////////// how 'this' works in JS
 

@@ -24,6 +24,12 @@ export class Attributes<T extends object> {
     // overwrite the 'data' properties with the 'update' properties
     Object.assign(this.data, update);
   }
+
+  // returns the whole data object (not just one property like 'get')
+  getAll(): T {
+    return this.data;
+  }
+
 }
 
 // Strings can be types so:
