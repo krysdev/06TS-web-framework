@@ -14,7 +14,7 @@ export class Eventing {
     handlers.push(callback);
     // assign the handlers to the object
     this.events[eventName] = handlers;
-  }
+  };
 
   // arrow function
   trigger = (eventName: string): void => {
@@ -29,5 +29,5 @@ export class Eventing {
     handlers.forEach((callback) => {
       callback();
     });
-  }
+  };
 }

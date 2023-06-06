@@ -21,6 +21,9 @@ interface HasId {
   id?: number;
 }
 
+// attributes - stores properties tied to the user (name, age, etc)
+// events - informs other parts of our application that data tied to a particular user is changed (on, trigger)
+// sync - saves this person's data to a remote server and then retreive it (save, fetch)
 export class Model<T extends HasId> {
   constructor(
     private attributes: ModelAttributes<T>,
@@ -28,18 +31,14 @@ export class Model<T extends HasId> {
     private sync: Sync<T>
   ) {}
 
-  // getters (accessors)
   // 'on' here is a reference to the 'on' method from the 'Eventing' class
   // it is not called here, the arguments will be passed through i.e.  user.on('click', () => {console.log('clicked')})
-  get on() {
-    return this.events.on; // there are no '()', we refer to this method like to a property
-  }
-  get trigger() {
-    return this.events.trigger;
-  }
-  get get() {
-    return this.attributes.get;
-  }
+
+  on = this.events.on; // there are no '()', we refer to this method like to a property
+
+  trigger = this.events.trigger;
+
+  get = this.attributes.get;
 
   // anytime we call 'set' we update the data in Attributes and we trigger a 'change' event (in Eventing)
   // this change allows other parts of the application to update also

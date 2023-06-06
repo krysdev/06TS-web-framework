@@ -20,19 +20,4 @@ export class User extends Model<UserProps> {
       new ApiSync<UserProps>(rootUrl)
     );
   }
-
-  //
-  // // events - informs other parts of our application that data tied to a particular user is changed (on, trigger)
-  // public events: Eventing = new Eventing();
-  //
-  // // sync - saves this person's data to a remote server and then retreive it (save, fetch)
-  // public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-  //
-  // // attributes - stores properties tied to the user (name, age, etc)
-  // public attributes: Attributes<UserProps>; // initialized through the constructor
-  //
-  // constructor(attrs: UserProps) {
-  //   this.attributes = new Attributes<UserProps>(attrs);
-  // }
-  //
 }
