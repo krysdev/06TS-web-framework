@@ -1,13 +1,16 @@
+import { User } from './models/User';
 import { UserForm } from './views/UserForm';
 
-const userForm = new UserForm(document.getElementById('root'));
-// const userForm = new UserForm(document.querySelector('#root'));
+const user = User.buildUser({ name: 'NAME', age: 20 });
 
-userForm.render();
-
-//
-
-//
+const element = document.getElementById('root');
+// type guard (exclude 'null' case)
+if (element) {
+  const userForm = new UserForm(element, user);
+  userForm.render();
+} else {
+  console.log(`Cant't get the HTML element by ID`)
+}
 
 ///////////// how 'this' works in JS
 
