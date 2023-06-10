@@ -1,10 +1,18 @@
-import { User } from './../models/User';
 import { Model, HasId } from '../models/Model';
 
+// interface modelForView {
+//   on(eventName: string, callback: () => void): void;
+// }
+
+// generic constraint
+// 'View' has 2 type arguments and in the first argument there is a reference to the second one
+// 'Model' itself is a generic class, so in order to provide a reference to it we need to provide a type for Model's T wich is K below
+// so it says that 'T' has the same properties as 'Model with type K loaded into it'
+// and the definition for 'Model<K>' comes from the second generic type passed in - K
 export abstract class View<T extends Model<K>, K extends HasId> {
   // 'parent' is the existing element in the DOM where we can insert the 'template'
   // 'Element' is a reference to any HTML element
-  constructor(public parent: Element, public model: User) {
+  constructor(public parent: Element, public model: T) {
     this.bindModel();
   }
 

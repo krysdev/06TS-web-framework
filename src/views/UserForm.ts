@@ -1,7 +1,8 @@
-// import { User } from '../models/User';
-import { View } from "./View";
+import { User, UserProps } from '../models/User';
+import { View } from './View';
 
-export class UserForm extends View {
+// 'View' requires 2 type definitions to be passed in (see View.ts)
+export class UserForm extends View <User, UserProps> {
   // an object of keys and values
   // the key is a string 'event_name:html_element_selector'
   // the value is the function to run
