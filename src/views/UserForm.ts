@@ -1,23 +1,11 @@
-import { User } from '../models/User';
+// import { User } from '../models/User';
+import { View } from "./View";
 
-export class UserForm {
-  // 'parent' is the existing element in the DOM where we can insert the 'template'
-  // 'Element' is a reference to any HTML element
-  constructor(public parent: Element, public model: User) {
-    this.bindModel();
-  }
-
-  bindModel(): void {
-    this.model.on('change', () => {
-      this.render();
-    });
-  }
-
+export class UserForm extends View {
   // an object of keys and values
   // the key is a string 'event_name:html_element_selector'
   // the value is the function to run
-  eventsMap(): { [key: string]: () => void } {
-    // so [the keys are strings] and the values : functions with no arguments and returning nothing
+  eventsMap(): { [key: string]: () => void } { // so [the keys are strings] and the values : functions with no arguments and returning nothing
     return {
       'mouseenter:h1': this.onHeaderHover,
       'click:.set-age': this.onSetAgeClick, // class '.set-age'
@@ -56,30 +44,5 @@ export class UserForm {
         <button class="set-age">Set Random Age</button>
       </div>
     `;
-  }
-
-  // DocumentFragment holds some HTML in memory before it is attached to the DOM
-  bindEvents(fragment: DocumentFragment): void {
-    const eventsMap = this.eventsMap();
-
-    for (let eventKey in eventsMap) {
-      // split the key-value pair
-      const [eventName, selector] = eventKey.split(':');
-
-      // fragment is the HTML to be inserted
-      // for every 'element' in the array that matches 'selector' we attach the event handler
-      fragment.querySelectorAll(selector).forEach((element) => {
-        element.addEventListener(eventName, eventsMap[eventKey]); // addEventListener(click, button)
-      });
-    }
-  }
-
-  // show the HTML from the 'template' method in the DOM
-  render(): void {
-    this.parent.innerHTML = ''; // delete and then render the HTML
-    const templateElement = document.createElement('template'); // create <template></template>
-    templateElement.innerHTML = this.template(); // insert the HTML code between <template>this.template</template>
-    this.bindEvents(templateElement.content); // add an event to an element (process the eventsMap)
-    this.parent.append(templateElement.content); // add the whole HTML into the parent element as a child
   }
 }
