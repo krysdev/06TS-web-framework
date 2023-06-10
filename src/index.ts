@@ -4,7 +4,7 @@ import { UserForm } from './views/UserForm';
 const user = User.buildUser({ name: 'NAME', age: 20 });
 
 const element = document.getElementById('root');
-// type guard (exclude 'null' case)
+// type guard (exclude 'null' case ->  const element: HTMLElement | null )
 if (element) {
   const userForm = new UserForm(element, user);
   userForm.render();
