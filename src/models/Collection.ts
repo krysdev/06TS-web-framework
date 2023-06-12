@@ -3,7 +3,7 @@ import { Eventing } from './Eventing';
 
 // generic class
 // T is a generic type for models
-// K is a generic type for json data that we get back (the data here has: id, name, age)
+// K is a generic type for json data that we get back (the data here has: id, name, age - so like UserProps from User.ts)
 export class Collection<T, K> {
   models: T[] = [];
   events: Eventing = new Eventing();
